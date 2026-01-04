@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro Edukasi</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Container animasi paru-paru -->
+    <div id="scene">
+      <img src="images/health_paru.png" id="lungs-clean" />
+      <img src="images/dirty_paru-removebg-preview.png" id="lungs-dirty" />
+      <div id="smoke-container"></div>
+    </div>
+
+    <!-- Intro teks -->
+    <div class="intro hidden">
+      <h1>Saatnya bilang <b>TIDAK!</b></h1>
+      <p>Jadilah Pelajar yang bebas dari asap rokok!</p>
+
+      <div id="loading-inline">
+        <div class="progress">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <span id="progress-text">0%</span>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

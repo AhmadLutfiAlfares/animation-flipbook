@@ -1,0 +1,206 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  /* background-image: url("images/bg2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 0;
+
+  background: 
+    url("images/bg2.png")
+    center / cover no-repeat;
+}
+
+@media (max-width: 768px) {
+  body::before {
+    background-image: url("images/bg_mobile.png");
+  }
+}
+
+
+#scene {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  #scene {
+    width: 190px;
+    height: 260px;
+  }
+}
+
+
+#scene img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  transition: opacity 1s ease;
+}
+
+#lungs-clean {
+  opacity: 1;
+  z-index: 2;
+  transition: opacity 1s ease;
+}
+
+#lungs-dirty {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1s ease;
+}
+
+
+
+#smoke-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.03);
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+  transition: opacity 2.5s ease;
+}
+
+
+.smoke {
+  position: absolute;
+  bottom: -30%;
+  width: 300px;
+  height: 300px;
+  background: rgba(240,240,240,0.6);
+  border-radius: 50%;
+  filter: blur(45px);
+  animation: smokeToCenter linear forwards;
+}
+
+.smoke {
+  background: rgba(230,230,230,0.65);
+  filter: blur(55px);
+  will-change: transform;
+}
+
+
+
+@keyframes smokeToCenter {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(2.3);
+    opacity: 0.6;
+  }
+}
+
+
+
+
+
+
+.intro {
+  position: fixed;
+  /* inset: 0; */
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  color: white;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .intro {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(6px);
+    color: white;
+    text-align: center;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#loading-inline {
+  margin-top: 18px;
+}
+
+
+.progress {
+  width: 220px;
+  height: 10px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  transition: width 0.25s ease;
+}
+
+#progress-text {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* testing */
+#scene {
+  position: relative;
+  z-index: 2;
+}
+
+#smoke-container {
+  z-index: 3;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
