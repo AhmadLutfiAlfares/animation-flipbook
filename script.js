@@ -104,11 +104,11 @@ function startIntroAnimation() {
   // asap tebal
   setTimeout(() => {
     // Kurangi jumlah smoke untuk mobile
-  let smokeCount = isMobile ? 10 : 20; // Kurangi drastis untuk mobile
+  let smokeCount = isMobile ? 5 : 10; // Kurangi drastis untuk mobile
   for (let i = 0; i < smokeCount; i++) createThickSmoke();
   
   // Interval lebih jarang untuk mobile
-  let intervalTime = isMobile ? 300 : 120; // Lebih jarang
+  let intervalTime = isMobile ? 400 : 140; // Lebih jarang
   smokeInterval = setInterval(createThickSmoke, intervalTime);
 }, 2200);
 
@@ -148,4 +148,5 @@ function startIntroAnimation() {
 ================================ */
 
 startIntroAnimation();
+
 
