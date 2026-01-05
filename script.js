@@ -108,7 +108,7 @@ function startIntroAnimation() {
   for (let i = 0; i < smokeCount; i++) createThickSmoke();
   
   // Interval lebih jarang untuk mobile
-  let intervalTime = isMobile ? 400 : 140; // Lebih jarang
+  let intervalTime = isMobile ? 100 : 120; // Lebih jarang
   smokeInterval = setInterval(createThickSmoke, intervalTime);
 }, 2200);
 
@@ -148,5 +148,6 @@ function startIntroAnimation() {
 ================================ */
 
 startIntroAnimation();
+
 
 
