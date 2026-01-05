@@ -29,7 +29,7 @@ function createThickSmoke() {
   smoke.className = "smoke";
   let size;
   if (isMobile) {
-    size = Math.random() * 200 + 200; // Ukuran lebih kecil
+    size = Math.random() * 100 + 100; // Ukuran lebih kecil
   } else {
     size = Math.random() * 400 + 500;
   }
@@ -104,7 +104,7 @@ function startIntroAnimation() {
   // asap tebal
   setTimeout(() => {
     // Kurangi jumlah smoke untuk mobile
-  let smokeCount = isMobile ? 15 : 40; // Kurangi drastis untuk mobile
+  let smokeCount = isMobile ? 10 : 40; // Kurangi drastis untuk mobile
   for (let i = 0; i < smokeCount; i++) createThickSmoke();
   
   // Interval lebih jarang untuk mobile
@@ -146,4 +146,5 @@ function startIntroAnimation() {
 /* ===============================
    START
 ================================ */
+
 startIntroAnimation();
