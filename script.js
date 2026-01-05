@@ -1,4 +1,6 @@
-const lungsClean = document.getElementById("lungs-clean");
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+const lungsClean = document.getElementById("lungs-clean");8
 const lungsDirty = document.getElementById("lungs-dirty");
 const smokeContainer = document.getElementById("smoke-container");
 const intro = document.querySelector(".intro");
@@ -25,10 +27,18 @@ const scene = document.getElementById("scene");
 function createThickSmoke() {
   const smoke = document.createElement("div");
   smoke.className = "smoke";
-
-  const size = Math.random() * 400 + 500;
+  let size;
+  if (isMobile) {
+    size = Math.random() * 200 + 200; // Ukuran lebih kecil
+  } else {
+    size = Math.random() * 400 + 500;
+  }
+  
   smoke.style.width = size + "px";
   smoke.style.height = size + "px";
+//   const size = Math.random() * 400 + 500;
+//   smoke.style.width = size + "px";
+//   smoke.style.height = size + "px";
 
   const side = Math.floor(Math.random() * 4);
 
@@ -93,9 +103,14 @@ function startIntroAnimation() {
 
   // asap tebal
   setTimeout(() => {
-    for (let i = 0; i < 40; i++) createThickSmoke();
-    smokeInterval = setInterval(createThickSmoke, 120);
-  }, 2200);
+    // Kurangi jumlah smoke untuk mobile
+  let smokeCount = isMobile ? 15 : 40; // Kurangi drastis untuk mobile
+  for (let i = 0; i < smokeCount; i++) createThickSmoke();
+  
+  // Interval lebih jarang untuk mobile
+  let intervalTime = isMobile ? 300 : 120; // Lebih jarang
+  smokeInterval = setInterval(createThickSmoke, intervalTime);
+}, 2200);
 
   // transisi paru
   setTimeout(() => {

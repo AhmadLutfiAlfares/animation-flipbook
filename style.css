@@ -204,3 +204,38 @@ body::before {
   inset: 0;
   z-index: 9999;
 }
+
+/* Tambahkan media query untuk mobile */
+@media (max-width: 768px) {
+  .smoke {
+    /* Kurangi blur dan opacity untuk performa */
+    filter: blur(25px) !important; /* Blur lebih ringan */
+    opacity: 0.5 !important;
+    will-change: transform, opacity;
+    /* Gunakan transform yang lebih sederhana */
+    transform: translateZ(0); /* Force GPU acceleration */
+  }
+  
+  #smoke-container {
+    /* Batasi jumlah smoke yang bisa dirender */
+    contain: layout paint style;
+    /* Kurangi opacity overlay */
+    background: rgba(255,255,255,0.01);
+  }
+}
+
+/* Optimasi untuk semua perangkat */
+.smoke {
+  /* Gunakan transform3d untuk GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Matikan animasi jika preferensi pengguna menginginkan pengurangan motion */
+@media (prefers-reduced-motion: reduce) {
+  .smoke {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
